@@ -10,7 +10,7 @@
       background-color: grey;
     }
     </style>
-    <title>My page title</title>
+    <title>PURGEatory</title>
   </head>
   <body>
     My zombie map
@@ -25,6 +25,8 @@
     </form>
     <script>
       var zombie_map;
+      var score = 0;
+      var tolerance = 10;
       var old_position;
       var all_markers = [];
       var data = `44.90349921747897 -93.50053068139363 weapon.png
@@ -75,6 +77,24 @@
       }
       function set_my_position(position){
         old_position.setMap(null);
+        for (var i=0; i < all_markers.length; i++){
+          var distance = google.maps.geometry.spherical.computeDistanceBetween(pos, all_markers[i].getPosition());
+          if(distance < tolerance){
+            var what_is_it = all_markers[i].getIcon();
+            what_is_it = what_is_it.replace(".png", "");
+            alert("Found a " + what_is_it);
+            all_markers[i].setMap(null);
+            if (what_is_it == "zombie") {
+              score -= 5;
+            }
+            if (what_is_it == "hospital") {
+              score += 15;
+            }
+            if (what_is_it == "weapon") {
+              score += 5;
+            }
+          }
+        }
         var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         var playerMarker = new google.maps.Marker({
           position: pos,
@@ -94,7 +114,7 @@
       }
     </script>
     <script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7Nm0sxubyHQfDNvu9zLhnr1SBx7lAlC4&callback=initMap">
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7Nm0sxubyHQfDNvu9zLhnr1SBx7lAlC4&callback=initMap&libraries=geometry">
 </script>
   </body>
 </html>
