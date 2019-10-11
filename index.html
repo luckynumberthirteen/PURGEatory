@@ -84,7 +84,7 @@
           map: zombie_map,
           icon: "player.png"
         })
-        console.log(playerMarker.lat() +" "+ playerMarker.lng())
+        console.log(playerMarker.pos())
         old_position = playerMarker;
         for (var i=0; i < all_markers.length; i++){
           var distance = google.maps.geometry.spherical.computeDistanceBetween(pos, all_markers[i].getPosition());
