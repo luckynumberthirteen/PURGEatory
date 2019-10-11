@@ -77,6 +77,14 @@
       }
       function set_my_position(position){
         old_position.setMap(null);
+
+        var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        var playerMarker = new google.maps.Marker({
+          position: pos,
+          map: zombie_map,
+          icon: "player.png"
+        })
+        old_position = playerMarker;
         for (var i=0; i < all_markers.length; i++){
           var distance = google.maps.geometry.spherical.computeDistanceBetween(pos, all_markers[i].getPosition());
           if(distance < tolerance){
@@ -95,13 +103,6 @@
             }
           }
         }
-        var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        var playerMarker = new google.maps.Marker({
-          position: pos,
-          map: zombie_map,
-          icon: "player.png"
-        })
-        old_position = playerMarker;
       }
       function place_marker(location){
         var emoji = document.getElementById('icon_to_use').value;
