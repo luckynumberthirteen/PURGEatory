@@ -47,7 +47,7 @@
           zoom: 17,
           center: {lat: 44.903, lng: -93.5}
 
-        });
+        })
         if(navigator.geolocation) {
           navigator.geolocation.watchPosition(set_my_position);
         }
@@ -94,15 +94,15 @@
             what_is_it = what_is_it.replace(".png", "");
             alert("Found a " + what_is_it);
             all_markers[i].setMap(null);
-            if (what_is_it == "zombie") {
-              score -= 5;
-            }
-            if (what_is_it == "hospital") {
-              score += 15;
-            }
-            if (what_is_it == "weapon") {
-              score += 5;
-            }
+            //if (what_is_it == "zombie") {
+            //  score -= 5;
+            //}
+            //if (what_is_it == "hospital") {
+            //  score += 15;
+            //}
+            //if (what_is_it == "weapon") {
+            //  score += 5;
+            //}
           }
         }
       }
@@ -117,7 +117,7 @@
       }
     </script>
     <script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7Nm0sxubyHQfDNvu9zLhnr1SBx7lAlC4&callback=initMap&libraries=geometry">
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7Nm0sxubyHQfDNvu9zLhnr1SBx7lAlC4&callback=initMap">
 </script>
   </body>
 </html>
