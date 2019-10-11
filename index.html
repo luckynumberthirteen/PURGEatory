@@ -11,7 +11,7 @@
     }
     </style>
     <title>PURGEatory</title>
-    <link rel="shortcut icon" type="image/x-icon" href="zombie.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
   </head>
   <body>
     My zombie map
@@ -84,6 +84,7 @@
           map: zombie_map,
           icon: "player.png"
         })
+        console.log(playerMarker.lat() +" "+ playerMarker.lng())
         old_position = playerMarker;
         for (var i=0; i < all_markers.length; i++){
           var distance = google.maps.geometry.spherical.computeDistanceBetween(pos, all_markers[i].getPosition());
